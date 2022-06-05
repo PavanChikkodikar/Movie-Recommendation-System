@@ -1,6 +1,7 @@
 import numpy as np
 from operator import itemgetter
 
+
 class KNearestNeighbours:
 
     def __init__(self, data, target, test_point, k):

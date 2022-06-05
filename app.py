@@ -9,7 +9,9 @@ with open(r'data.json', 'r+', encoding='utf-8') as f:
 with open(r'titles.json', 'r+', encoding='utf-8') as f:
     movie_titles = json.load(f)
 
+
 def knn(test_point, k):
+
     # Create dummy target variable for the KNN Classifier
     target = [0 for item in movie_titles]
     # Instantiate object for the Classifier
@@ -25,16 +27,19 @@ def knn(test_point, k):
         table.append([movie_titles[i][0], movie_titles[i][2]])
     return table
 
+
 if __name__ == '__main__':
     genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
               'Fantasy', 'Film-Noir', 'Game-Show', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'News',
               'Reality-TV', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Thriller', 'War', 'Western']
 
+
     movies = [title[0] for title in movie_titles]
     st.header('Movie Recommendation System') 
     apps = ['--Select--', 'Movie based', 'Genres based']   
     app_options = st.selectbox('Select application:', apps)
-    
+
+
     if app_options == 'Movie based':
         movie_select = st.selectbox('Select movie:', ['--Select--'] + movies)
         if movie_select == '--Select--':
