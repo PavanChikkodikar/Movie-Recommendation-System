@@ -4,7 +4,7 @@ from operator import itemgetter
 
 class KNearestNeighbours:
 
-    def __init__(self, data, target, test_point, k):
+    def __init__(self, data, target, test_point, k): #parameters of knn
         self.data = data
         self.target = target
         self.test_point = test_point
@@ -17,13 +17,14 @@ class KNearestNeighbours:
 
     @staticmethod
     def dist(p1, p2):
-        """Method returns the euclidean distance between two points"""
+        #Method returns the euclidean distance between two points
         return np.linalg.norm(np.array(p1) - np.array(p2))
 
+    #for training the algorithm
     def fit(self):
-        """Method that performs the KNN classification"""
+        #Method that performs the KNN classification
         # Create a list of (distance, index) tuples from the test point to each point in the data
-        self.distances.extend([(self.dist(self.test_point, point), i) for point, i in zip(self.data, [i for i in range(len(self.data))])])
+        self.distances.extend([(self.dist(self.test_point, point), i) for point, i in zip(self.data, [i for i in range(len(self.data))])]) #fetching the distances
         # Sort the distances in ascending order
         sorted_li = sorted(self.distances, key=itemgetter(0))
         # Fetch the indices of the k nearest point from the data

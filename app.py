@@ -1,7 +1,9 @@
+
 import streamlit as st
 import json
 from Classifier import KNearestNeighbours
-from operator import itemgetter
+from operator import itemgetter #getting the item
+
 
 # Load data and movies list from corresponding JSON files
 with open(r'data.json', 'r+', encoding='utf-8') as f:
@@ -35,8 +37,8 @@ if __name__ == '__main__':
 
 
     movies = [title[0] for title in movie_titles]
-    st.header('Movie Recommendation System') 
-    apps = ['--Select--', 'Movie based', 'Genres based']   
+    st.header('Movie Recommendation System')  #component of streamlit
+    apps = ['--Select--', 'Movie based', 'Genres based']   #options
     app_options = st.selectbox('Select application:', apps)
 
 
@@ -52,10 +54,12 @@ if __name__ == '__main__':
             for movie, link in table:
                 # Displays movie title with link to imdb
                 st.markdown(f"[{movie}]({link})")
+
+
     elif app_options == apps[2]:
         options = st.multiselect('Select genres:', genres)
         if options:
-            imdb_score = st.slider('IMDb score:', 1, 10, 8)
+            imdb_score = st.slider('IMDb score:', 1, 10, 8) #default value is 8
             n = st.number_input('Number of movies:', min_value=5, max_value=20, step=1)
             test_point = [1 if genre in options else 0 for genre in genres]
             test_point.append(imdb_score)
